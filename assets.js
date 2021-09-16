@@ -11,27 +11,45 @@ const pjson = require('../../project.json');
 * the project using changelog-gitter
 */
 var project = pjson.name;
+console.log(project)
 
 /**
 * Accessing stk files from the stk.
 */
-const stkWorkflowFiles = path.resolve('../'+project+'/node_modules/workflows-stacker/workflows')
-const stkWorkflowTestFiles = path.resolve('../'+project+'/node_modules/workflows-stacker/workflows_tests')
+const stkWorkflowsDir = path.resolve('../'+project+'/node_modules/workflows-stacker/workflows')
+const stkWorkflowsTestsDir = path.resolve('../'+project+'/node_modules/workflows-stacker/workflows_tests')
+const stkWorkflowsTextFile = path.resolve('../'+project+'/node_modules/workflows-stacker/workflows.txt')
 
 /**
 * Accessing project files from root
 */
-var projectWorkflowsDir = "./workflows/" 
-const projectWorkflowTestFiles = "./Tests/"
+var projectWorkflowsDir = path.resolve('../'+project+'/Custom_Workflows') 
+const projectWorkflowsTestsDir = path.resolve('../'+project+'/Tests')
 
 getProjectWorkflowsDir = () => {
     return projectWorkflowsDir 
 }
 
-getWorkflowsDir = () => {
-    return projectWorkflowsDir 
+getProjectWorkflowsTestsDir = () => {
+    return projectWorkflowsTestsDir 
+}
+
+getSTKWorkflowsDir = () => {
+    return stkWorkflowsDir 
+}
+
+getSTKWorkflowsTestsDir = () => {
+    return stkWorkflowsTestsDir 
+}
+
+getSTKWorkflowsTextFile = () => {
+    return stkWorkflowsTextFile 
 }
 
 module.exports = {
     getProjectWorkflowsDir,
+	getProjectWorkflowsTestsDir,
+	getSTKWorkflowsDir,
+	getSTKWorkflowsTestsDir,
+	getSTKWorkflowsTextFile
 }
