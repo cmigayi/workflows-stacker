@@ -1,11 +1,11 @@
 {
-  "name": "uipath-workflows-stacker",
-  "version": "1.0.0",
-  "description": "",
+  "name": "workflows-stacker",
+  "version": "0.1.0",
+  "description": "A tool that stores code or workflows for future use",
   "main": "stk.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Cecil Migayi",
+  "license": "MIT"
 }

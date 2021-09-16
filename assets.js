@@ -1,3 +1,5 @@
+const path = require('path');
+
 /**
 * The package we are accessing here is not for changelog-gitter but for
 * the project using changelog-gitter
