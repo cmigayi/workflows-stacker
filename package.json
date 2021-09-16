@@ -1,6 +1,6 @@
 {
   "name": "workflows-stacker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A tool that stores code or workflows for future use",
   "main": "stk.js",
   "scripts": {
