@@ -28,23 +28,25 @@ routeWorkflow = async (val) => {
 }
 
 routeAddWorkflow = (val) => {
-    if(fs.existsSync(assets.getProjectWorkflowsDir()+""+val+".xaml")){
+    if(fs.existsSync(assets.getSTKWorkflowsDir()+""+val+".xaml")){
         console.log(val+" already exists");
     }else{
-        if(fs.existsSync(val+".xaml") && fs.existsSync("Test"+val+".xaml")){
+		console.log(assets.getProjectWorkflowsDir())
+		console.log(assets.getProjectWorkflowsTestsDir())
+        if(fs.existsSync(assets.getProjectWorkflowsDir()+"/"+val+".xaml") && fs.existsSync(assets.getProjectWorkflowsTestsDir()+"/Test"+val+".xaml")){
             // Copy workflow content 
-            fs.copyFileSync(val+".xaml", assets.getProjectWorkflowsDir()+""+val+".xaml");
+            fs.copyFileSync(assets.getProjectWorkflowsDir()+"/"+val+".xaml", assets.getSTKWorkflowsDir()+"/"+val+".xaml");
             console.log(val+" copied to workflows directory");
 
-            fs.copyFileSync("Test"+val+".xaml", "workflows_tests/Test"+val+".xaml");
+            fs.copyFileSync(assets.getProjectWorkflowsTestsDir()+"/Test"+val+".xaml", assets.getSTKWorkflowsTestsDir()+"/Test"+val+".xaml");
             console.log("Test"+val+" copied to workflows_tests directory");
             
-            if(fs.existsSync("workflows.txt")){
+            if(fs.existsSync(assets.getSTKWorkflowsTextFile())){
                 // Write to file
-                fs.appendFileSync("workflows.txt", val+"\n");            
+                fs.appendFileSync(assets.getSTKWorkflowsTextFile(), val+"\n");            
             }else{
                 // Create and write to file
-                fs.writeFileSync("workflows.txt", val, { flag: 'wx' });
+                fs.writeFileSync(assets.getSTKWorkflowsTextFile(), val, { flag: 'wx' });
             }
             console.log(val+" appended to workflows.txt");
         }else{
