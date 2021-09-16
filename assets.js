@@ -11,7 +11,6 @@ const pjson = require('../../project.json');
 * the project using changelog-gitter
 */
 var project = pjson.name;
-console.log(project)
 
 /**
 * Accessing stk files from the stk.
