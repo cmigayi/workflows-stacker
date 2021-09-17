@@ -1,5 +1,5 @@
 const fs = require('fs')
-const assets = require('./assets')
+const assets = require('../assets')
 
 var workflowDic = []
 
