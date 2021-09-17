@@ -60,8 +60,8 @@ updateWorkflowsTextFile = (workflowName) => {
 
 module.exports = {
     createAppDirIfNotExist,
-    createAndCopyWorkflowsBackupInDirIfNotExist,
-    createAndCopyWorkflowsTestsBackupInDirIfNotExist,
+    createAndCopyAllWorkflowsBackupInDirIfNotExist,
+    createAndCopyAllWorkflowsTestsBackupInDirIfNotExist,
     createWorkflowsTextFileIfNotExist,
     updateWorkflowsTextFile,
     updateWorkflowsBackupInDir,

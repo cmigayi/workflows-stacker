@@ -80,6 +80,13 @@ routeImportWorkflow = (val) => {
     })    
 }
 
+routeBackupWorkflow() = () => {
+    localBackup.createAppDirIfNotExist()
+    localBackup.createAndCopyAllWorkflowsBackupInDirIfNotExist()
+    localBackup.createAndCopyAllWorkflowsTestsBackupInDirIfNotExist()
+    localBackup.createWorkflowsTextFileIfNotExist()
+}
+
 routeDeleteWorkflow = (val) => {
 
 }
@@ -91,5 +98,6 @@ routeUpdateWorkflow = (val) => {
 module.exports = {
     routeWorkflow,
     routeAddWorkflow,
-    routeImportWorkflow
+    routeImportWorkflow,
+    routeBackupWorkflow
 }

@@ -5,7 +5,11 @@ const assets = require('./assets')
 
 try{
     if(args.length < 4){
-        console.log(syntaxError)
+        if(args[2] === "backup"){           
+            utils.routeBackupWorkflow()
+        }else{
+            console.log(syntaxError)
+        }
     }
     if(args.length === 4){
         // Check the preceeding args validity
