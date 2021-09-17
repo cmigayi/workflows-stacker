@@ -60,17 +60,17 @@ routeImportWorkflow = (val) => {
     workflows.forEach(workflow => {
         if(workflow['key'].toString() === val){
             console.log(workflow['value'])
-            if(fs.existsSync(assets.getSTKWorkflowsDir()+"/"+workflow['value']+".xaml") && fs.existsSync(assets.getSTKWorkflowsTestsDir()+"Test"+workflow['value']+".xaml")){
+            if(fs.existsSync(assets.getSTKWorkflowsDir()+"/"+workflow['value']+".xaml") && fs.existsSync(assets.getSTKWorkflowsTestsDir()+"/Test"+workflow['value']+".xaml")){
                 // Copy workflow content 
-                fs.copyFileSync(assets.getSTKWorkflowsDir()+"/"+workflow['value']+".xaml", assets.getProjectWorkflowsDir()+""+workflow['value']+".xaml");
-                console.log(val+" imported to project workflows directory");
+                fs.copyFileSync(assets.getSTKWorkflowsDir()+"/"+workflow['value']+".xaml", assets.getProjectWorkflowsDir()+"/"+workflow['value']+".xaml");
+                console.log(workflow['value']+" imported to project workflows directory");
     
-                fs.copyFileSync(assets.getSTKWorkflowsTestsDir()+"Test"+workflow['value']+".xaml", assets.getProjectWorkflowsTestsDir()+"Test"+workflow['value']+".xaml");
+                fs.copyFileSync(assets.getSTKWorkflowsTestsDir()+"/Test"+workflow['value']+".xaml", assets.getProjectWorkflowsTestsDir()+"/Test"+workflow['value']+".xaml");
                 console.log("Test"+workflow['value']+" copied to workflows_tests directory");
 
                 console.log(workflow['value']+" imported to project tests directory");
             }else{
-                console.log(val+" doesn't exist in your project or it's missing a test file");
+                console.log(workflow['value']+" doesn't exist in your stk workflow repository");
             }
         }
     })    
