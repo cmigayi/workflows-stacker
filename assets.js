@@ -22,8 +22,18 @@ const stkWorkflowsTextFile = path.resolve('../'+project+'/node_modules/workflows
 /**
 * Accessing project files from root
 */
-var projectWorkflowsDir = path.resolve('../'+project+'/Custom_Workflows') 
+const projectWorkflowsDir = path.resolve('../'+project+'/Custom_Workflows') 
 const projectWorkflowsTestsDir = path.resolve('../'+project+'/Tests')
+
+/**
+* stk support files  !!!IMPORTANT
+*/
+var logFile = path.resolve('../'+project+'/stk_log.txt')
+var localDataBakDirWin = path.resolve('../../../AppData/Local/workflows-stacker')
+var localDataBakDirMac = "" // Use this:  path.resolve(YOUR LOCATION)  
+var localDataBakDirLin = "" // Use this:  path.resolve(YOUR LOCATION) 
+var globalDataBakDir = ""
+var fileExt = ".xaml"
 
 getProjectWorkflowsDir = () => {
     return projectWorkflowsDir 
@@ -45,10 +55,25 @@ getSTKWorkflowsTextFile = () => {
     return stkWorkflowsTextFile 
 }
 
+getSTKLocalDataBakDir = () => {
+    let opsys = process.platform;
+    console.log(opsys)
+    if(opsys === "linux"){        
+        return localDataBakDirLin
+    }
+    if(opsys == "darwin"){ 
+        return localDataBakDirMac
+    }
+    if (opsys == "win32" || opsys == "win64") {
+        return localDataBakDirWin
+    }
+}
+
 module.exports = {
     getProjectWorkflowsDir,
 	getProjectWorkflowsTestsDir,
 	getSTKWorkflowsDir,
 	getSTKWorkflowsTestsDir,
-	getSTKWorkflowsTextFile
+	getSTKWorkflowsTextFile,
+    getSTKLocalDataBakDir
 }

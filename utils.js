@@ -1,8 +1,9 @@
 const fs = require('fs')
 const workflowTextFile = require('./utils/workflowTextFile')
 const assets = require('./assets')
+const localBackup = require('./utils/stkLocalBackup')
 
-routeWorkflow = async (val) => { 
+routeWorkflow = (val) => { 
     var workflows = workflowTextFile.getAllWorkflows()   
     switch(val){
         case "all":
@@ -23,7 +24,7 @@ routeWorkflow = async (val) => {
         break;
         default:
             console.log(syntaxError)
-            break;
+        break;
     }
 }
 
@@ -37,9 +38,11 @@ routeAddWorkflow = (val) => {
             // Copy workflow content 
             fs.copyFileSync(assets.getProjectWorkflowsDir()+"/"+val+".xaml", assets.getSTKWorkflowsDir()+"/"+val+".xaml");
             console.log(val+" copied to workflows directory");
+            localBackup.updateWorkflowsBackupInDir(val+".xaml")
 
             fs.copyFileSync(assets.getProjectWorkflowsTestsDir()+"/Test"+val+".xaml", assets.getSTKWorkflowsTestsDir()+"/Test"+val+".xaml");
             console.log("Test"+val+" copied to workflows_tests directory");
+            localBackup.updateWorkflowsTestsBackupInDir(val+".xaml")
             
             if(fs.existsSync(assets.getSTKWorkflowsTextFile())){
                 // Write to file
@@ -49,6 +52,7 @@ routeAddWorkflow = (val) => {
                 fs.writeFileSync(assets.getSTKWorkflowsTextFile(), val, { flag: 'wx' });
             }
             console.log(val+" appended to workflows.txt");
+            localBackup.updateWorkflowsTextFile(val)
         }else{
             console.log(val+" doesn't exist in your project or it's missing a test file");
         }

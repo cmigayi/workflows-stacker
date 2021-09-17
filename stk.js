@@ -1,6 +1,7 @@
 const utils = require('./utils')
 const args = process.argv
 const syntaxError = "Invalid request. Kindly refer to the documentation for a valid syntax"
+const assets = require('./assets')
 
 try{
     if(args.length < 4){
