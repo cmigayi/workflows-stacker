@@ -1,10 +1,11 @@
 const fs = require('fs')
+const assets = require('./assets')
 
 var workflowDic = []
 
 getAllWorkflows = () => {
     var count = 0
-    var workflows = fs.readFileSync("workflows.txt", {encoding:'utf8', flag:'r'})
+    var workflows = fs.readFileSync(assets.getSTKWorkflowsTextFile(), {encoding:'utf8', flag:'r'})
     workflows = workflows.split('\n')            
     workflows.forEach((workflow) => { 
        count++                              

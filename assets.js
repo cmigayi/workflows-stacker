@@ -13,7 +13,7 @@ const pjson = require('../../project.json');
 var project = pjson.name;
 
 /**
-* Accessing stk files from the stk.
+* Accessing stk files from the workflow-stacker.
 */
 const stkWorkflowsDir = path.resolve('../'+project+'/node_modules/workflows-stacker/workflows')
 const stkWorkflowsTestsDir = path.resolve('../'+project+'/node_modules/workflows-stacker/workflows_tests')
