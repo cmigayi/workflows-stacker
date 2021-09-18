@@ -26,7 +26,7 @@ createAndCopyAllWorkflowsBackupInDirIfNotExist = () => {
 }
 
 updateWorkflowsBackupInDir = (workflow) => {
-    fs.copyFileSync(assets.getProjectWorkflowsDir()+"/"+val+".xaml", assets.getSTKLocalDataBakDir()+"/.bakWorkflows"+"/"+workflow);
+    fs.copyFileSync(assets.getProjectWorkflowsDir()+"/"+workflow, assets.getSTKLocalDataBakDir()+"/.bakWorkflows"+"/"+workflow);
     console.log(workflow+" copied to local backup directory");
 }
 
@@ -39,7 +39,7 @@ createAndCopyAllWorkflowsTestsBackupInDirIfNotExist = () => {
 }
 
 updateWorkflowsTestsBackupInDir = (workflowTest) => {
-    fs.copyFileSync(assets.getProjectWorkflowsTestsDir()+"/Test"+val+".xaml", assets.getSTKLocalDataBakDir()+"/.bakWorkflowsTests"+"/Test"+workflowTest);
+    fs.copyFileSync(assets.getProjectWorkflowsTestsDir()+"/Test"+workflowTest, assets.getSTKLocalDataBakDir()+"/.bakWorkflowsTests"+"/Test"+workflowTest);
     console.log(workflowTest+" copied to workflows_tests directory");    
 }
 

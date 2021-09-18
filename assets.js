@@ -57,7 +57,6 @@ getSTKWorkflowsTextFile = () => {
 
 getSTKLocalDataBakDir = () => {
     let opsys = process.platform;
-    console.log(opsys)
     if(opsys === "linux"){        
         return localDataBakDirLin
     }
