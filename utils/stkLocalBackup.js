@@ -4,11 +4,12 @@
 
 const fs = require('fs')
 const assets = require('../assets')
+const fsExtra = require('fs-extra')
 
 const bakWorkflowsTextFile = assets.getSTKLocalDataBakDir()+"/.bak_workflows.txt"
-const stkWorkflowsTextFile = assets.stkWorkflowsTextFile
-const stkWorkflowsDir = assets.stkWorkflowsDir
-const stkWorkflowsTestsDir = assets.getSTKWorkflowsTestsDir
+const stkWorkflowsTextFile = assets.getSTKWorkflowsTextFile()
+const stkWorkflowsDir = assets.getSTKWorkflowsDir()
+const stkWorkflowsTestsDir = assets.getSTKWorkflowsTestsDir()
 
 createAppDirIfNotExist = () => {
     if(!fs.existsSync(assets.getSTKLocalDataBakDir())){
@@ -20,7 +21,8 @@ createAndCopyAllWorkflowsBackupInDirIfNotExist = () => {
     if(!fs.existsSync(assets.getSTKLocalDataBakDir()+"/.bakWorkflows")){
         fs.mkdirSync(assets.getSTKLocalDataBakDir()+"/.bakWorkflows")
     }
-    fs.copyFileSync(stkWorkflowsDir+"/*", assets.getSTKLocalDataBakDir()+"/.bakWorkflows")
+    //fs.copyFileSync(stkWorkflowsDir+"/*", assets.getSTKLocalDataBakDir()+"/.bakWorkflows")
+    fsExtra.copy(stkWorkflowsDir, assets.getSTKLocalDataBakDir()+"/.bakWorkflows").then(() => console.log("Copied workflows to local backup")).catch((err) => console.log(err));
 }
 
 updateWorkflowsBackupInDir = (workflow) => {
@@ -32,7 +34,8 @@ createAndCopyAllWorkflowsTestsBackupInDirIfNotExist = () => {
     if(!fs.existsSync(assets.getSTKLocalDataBakDir()+"/.bakWorkflowsTests")){
         fs.mkdirSync(assets.getSTKLocalDataBakDir()+"/.bakWorkflowsTests")
     }
-    fs.copyFileSync(stkWorkflowsTestsDir+"/*", assets.getSTKLocalDataBakDir()+"/.bakWorkflowsTests")
+    //fs.copyFileSync(stkWorkflowsTestsDir+"/*", assets.getSTKLocalDataBakDir()+"/.bakWorkflowsTests")
+    fsExtra.copy(stkWorkflowsTestsDir, assets.getSTKLocalDataBakDir()+"/.bakWorkflowsTests").then(() => console.log("Copied workflowsTests to local backup")).catch((err) => console.log(err));
 }
 
 updateWorkflowsTestsBackupInDir = (workflowTest) => {

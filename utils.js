@@ -80,7 +80,7 @@ routeImportWorkflow = (val) => {
     })    
 }
 
-routeBackupWorkflow() = () => {
+routeBackupWorkflow = () => {
     localBackup.createAppDirIfNotExist()
     localBackup.createAndCopyAllWorkflowsBackupInDirIfNotExist()
     localBackup.createAndCopyAllWorkflowsTestsBackupInDirIfNotExist()

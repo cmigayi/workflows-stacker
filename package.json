@@ -1,11 +1,14 @@
 {
   "name": "workflows-stacker",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A tool that stores code or workflows for future use",
   "main": "stk.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cecil Migayi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^10.0.0"
+  }
 }
